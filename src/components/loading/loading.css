@@ -1,0 +1,38 @@
+/* Ensure Loading screen covers full viewport */
+.loading-container {
+  position: fixed; /* Keep it above everything */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #141311; /* Explicit black background */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center items vertically */
+  align-items: center; /* Center items horizontally */
+  z-index: 9999;
+}
+
+/* Center the video */
+.loading-video {
+  max-width: 80vw; /* Adjust width for responsiveness */
+  max-height: 60vh; /* Keep it within the screen */
+  object-fit: contain; /* Maintain aspect ratio */
+  pointer-events: none;
+}
+@media(max-width: 900px) {
+  .loading-video {
+    width: 20rem;
+  }
+}
+
+
+/* Center the logo below the video */
+.logo-container {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.logo-container a {
+  pointer-events: none;
+}
