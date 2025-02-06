@@ -7,7 +7,7 @@ export default function Header() {
     return(
         <>
             <header className="header" role="banner">
-                <video autoPlay muted loop id="background-video" playsInline>
+                <video preload="auto" autoPlay muted loop id="background-video" playsInline>
                     <source src={backgroundAnimation} type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
