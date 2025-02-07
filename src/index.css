@@ -67,10 +67,6 @@
 }
 
 
-
-
-
-
 html {
   font-size: 62.5%; /* (16/10)*100 = 62.5% => 1rem = 10px */
   box-sizing: border-box;
@@ -516,9 +512,11 @@ body:not(.user-is-tabbing) a:focus {
   display: none;
 }
 
-.btn--pink:hover,
-.btn--pink:focus {
-  background: transparent;
+@media(max-width: 500px) {
+  .btn--pink:hover,
+  .btn--pink:focus {
+    background: transparent;
+  }
 }
 
 /* .call-action-btn {
@@ -595,9 +593,6 @@ body:not(.user-is-tabbing) a:focus {
       right: 1rem;
   }
 }
-
-
-
 
 
 
