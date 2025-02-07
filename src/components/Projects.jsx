@@ -51,7 +51,7 @@ export default function Projects() {
                     <li>REST API Integration</li>
                   </ul>
                   <div className="work__links">
-                    <a href="https://chris-learning-journal.netlify.app/" className="link__text">
+                    <a href="https://chris-learning-journal.netlify.app/" target="_blank" className="link__text">
                       Visit Site <span>&rarr;</span>
                     </a>
                     <a href="https://github.com/chrisedeson/scrimba-homework/tree/main/my_learning_journal" target="_blank" rel="noopener noreferrer">
@@ -77,7 +77,7 @@ export default function Projects() {
                     <li>CSS</li>
                   </ul>
                   <div className="work__links">
-                    <a href="https://chris-endgame.netlify.app/" className="link__text">
+                    <a href="https://chris-endgame.netlify.app/" target="_blank" className="link__text">
                       Visit Site <span>&rarr;</span>
                     </a>
                     <a href="https://github.com/chrisedeson/scrimba-homework/tree/main/assembly-endgame" target="_blank" rel="noopener noreferrer">
