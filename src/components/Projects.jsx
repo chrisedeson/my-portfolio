@@ -25,7 +25,7 @@ export default function Projects() {
                     <li>JavaScript</li>
                   </ul>
                   <div className="work__links">
-                    <a href="https://nisar.surge.sh" target="_blank" className="link__text">
+                    <a href="https://chrisflex-movie-watchlist.netlify.app/" target="_blank" className="link__text">
                       Visit Site <span>&rarr;</span>
                     </a>
                     <a href="https://github.com/chrisedeson/scrimba-homework/tree/main/movie_watchlist" target="_blank" rel="noopener noreferrer">
@@ -51,7 +51,7 @@ export default function Projects() {
                     <li>REST API Integration</li>
                   </ul>
                   <div className="work__links">
-                    <a href="#" className="link__text">
+                    <a href="https://chris-learning-journal.netlify.app/" className="link__text">
                       Visit Site <span>&rarr;</span>
                     </a>
                     <a href="https://github.com/chrisedeson/scrimba-homework/tree/main/my_learning_journal" target="_blank" rel="noopener noreferrer">
@@ -66,9 +66,9 @@ export default function Projects() {
       
               <div className="work__box">
                 <div className="work__text">
-                  <h3>Vanlife</h3>
+                  <h3>Assembly Endgame</h3>
                   <p>
-                    An app for exploring and booking campervans for travel.
+                    An interactive word-guessing game.
                   </p>
                   <ul className="work__list">
                     <li>React</li>
@@ -77,17 +77,17 @@ export default function Projects() {
                     <li>CSS</li>
                   </ul>
                   <div className="work__links">
-                    <a href="#" className="link__text">
+                    <a href="https://chris-endgame.netlify.app/" className="link__text">
                       Visit Site <span>&rarr;</span>
                     </a>
-                    <a href="hhttps://github.com/chrisedeson/scrimba-homework/tree/main/van-life" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/chrisedeson/scrimba-homework/tree/main/assembly-endgame" target="_blank" rel="noopener noreferrer">
                       <FaGithub className="work__code" title="View Source Code" />
                     </a>
 
                   </div>
                 </div>
                 <div className="work__image-box">
-                  <img src={project3} className="work__image" alt="Van Life" />
+                  <img src={project3} className="work__image" alt="Assembly Endgame" />
                 </div>
               </div>
             </div>
