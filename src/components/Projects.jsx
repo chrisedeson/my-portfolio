@@ -2,7 +2,7 @@ import React from "react"
 import { FaGithub } from 'react-icons/fa';
 import project1 from "../assets/images/movie-watchlist.jpg"
 import project2 from "../assets/images/learning-journal.jpg"
-import project3 from "../assets/images/van-life.jpg"
+import project3 from "../assets/images/screenshot.jpg"
 
 export default function Projects() {
     return(
