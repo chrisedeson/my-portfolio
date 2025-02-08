@@ -23,6 +23,7 @@ export default function Projects() {
                     <li>HTML</li>
                     <li>CSS</li>
                     <li>JavaScript</li>
+                    <li>REST API Integration</li>
                   </ul>
                   <div className="work__links">
                     <a href="https://chrisflex-movie-watchlist.netlify.app/" target="_blank" className="link__text">
@@ -48,7 +49,6 @@ export default function Projects() {
                     <li>HTML</li>
                     <li>CSS</li>
                     <li>JavaScript</li>
-                    <li>REST API Integration</li>
                   </ul>
                   <div className="work__links">
                     <a href="https://chris-learning-journal.netlify.app/" target="_blank" className="link__text">
