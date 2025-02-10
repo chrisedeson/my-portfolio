@@ -31,10 +31,10 @@ export const skillsSection = {
         skillName: "reactjs",
         fontAwesomeClassname: "fab fa-react"
       },
-      {
-        skillName: "nodejs",
-        fontAwesomeClassname: "fab fa-node"
-      },
+      // {
+      //   skillName: "nodejs",
+      //   fontAwesomeClassname: "fab fa-node"
+      // },
       {
         skillName: "npm",
         fontAwesomeClassname: "fab fa-npm"
@@ -43,10 +43,10 @@ export const skillsSection = {
         skillName: "sql-database",
         fontAwesomeClassname: "fas fa-database"
       },
-      {
-        skillName: "aws",
-        fontAwesomeClassname: "fab fa-aws"
-      },
+      // {
+      //   skillName: "aws",
+      //   fontAwesomeClassname: "fab fa-aws"
+      // },
       {
         skillName: "firebase",
         fontAwesomeClassname: "fas fa-fire"
