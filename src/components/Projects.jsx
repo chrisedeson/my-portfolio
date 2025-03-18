@@ -3,6 +3,7 @@ import { FaGithub } from 'react-icons/fa';
 import project1 from "../assets/images/movie-watchlist.jpg"
 import project2 from "../assets/images/learning-journal.jpg"
 import project3 from "../assets/images/screenshot.jpg"
+import project4 from "../assets/images/pollyglot.jpg"
 
 export default function Projects() {
     return(
@@ -90,6 +91,36 @@ export default function Projects() {
                   <img src={project3} className="work__image" alt="Assembly Endgame" />
                 </div>
               </div>
+
+              <div className="work__box">
+                <div className="work__text">
+                  <h3>PollyGrot</h3>
+                  <p>
+                    A translation chatbot.
+                  </p>
+                  <ul className="work__list">
+                    <li>React</li>
+                    <li>Python</li>
+                    <li>Uvicorn</li>
+                    <li>FastAPI</li>
+                    <li>Docker</li>
+                    <li>Google Cloud CLI</li>
+                    <li>Google Vertex AI</li>
+                  </ul>
+                  <div className="work__links">
+                    <a href="https://pollyglot-translate.netlify.app/" target="_blank" className="link__text">
+                      Visit Site <span>&rarr;</span>
+                    </a>
+                    <a href="https://github.com/chrisedeson/scrimba-homework/tree/main/pollyglot" target="_blank" rel="noopener noreferrer">
+                      <FaGithub className="work__code" title="View Source Code" />
+                    </a>
+                  </div>
+                </div>
+                <div className="work__image-box">
+                  <img src={project4} className="work__image" alt="PollyGrot" />
+                </div>
+              </div>
+
             </div>
           </div>
         </section>
