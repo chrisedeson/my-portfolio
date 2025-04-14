@@ -4,6 +4,7 @@ import project1 from "../assets/images/movie-watchlist.jpg"
 import project2 from "../assets/images/learning-journal.jpg"
 import project3 from "../assets/images/screenshot.jpg"
 import project4 from "../assets/images/pollyglot.jpg"
+import project5 from "../assets/images/skimmer.jpg"
 
 export default function Projects() {
     return(
@@ -118,6 +119,32 @@ export default function Projects() {
                 </div>
                 <div className="work__image-box">
                   <img src={project4} className="work__image" alt="PollyGrot" />
+                </div>
+              </div>
+
+              <div className="work__box">
+                <div className="work__text">
+                  <h3>Skimmer</h3>
+                  <p>
+                    A fast, responsive recipe-skimming app.
+                  </p>
+                  <ul className="work__list">
+                    <li>Javascript</li>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                  </ul>
+                  <div className="work__links">
+                    <a href="https://skimmer-chef.netlify.app/" target="_blank" className="link__text">
+                      Visit Site <span>&rarr;</span>
+                    </a>
+                    <a href="https://github.com/chrisedeson/wdd330/tree/main/final-project" target="_blank" rel="noopener noreferrer">
+                      <FaGithub className="work__code" title="View Source Code" />
+                    </a>
+
+                  </div>
+                </div>
+                <div className="work__image-box">
+                  <img src={project5} className="work__image" alt="Skimmer Web App" />
                 </div>
               </div>
 
