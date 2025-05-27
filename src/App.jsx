@@ -24,6 +24,7 @@ function App() {
         <Loading onVideoEnd={handleVideoEnd} /> // Pass the function to Loading component
       ) : (
         <>
+        <CreatureAnimation />
           <AccessibilityFeatures />
           <Header />
           <Greeting />
