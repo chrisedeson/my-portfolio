@@ -30,25 +30,25 @@ const CreatureAnimation = () => {
     };
     
     const handleMouseDown = (event) => {
-      if ((event.button = 0)) {
+      if ((event.button === 0)) {
         Input.mouse.left = true;
       }
-      if ((event.button = 1)) {
+      if ((event.button === 1)) {
         Input.mouse.middle = true;
       }
-      if ((event.button = 2)) {
+      if ((event.button === 2)) {
         Input.mouse.right = true;
       }
     };
     
     const handleMouseUp = (event) => {
-      if ((event.button = 0)) {
+      if ((event.button === 0)) {
         Input.mouse.left = false;
       }
-      if ((event.button = 1)) {
+      if ((event.button === 1)) {
         Input.mouse.middle = false;
       }
-      if ((event.button = 2)) {
+      if ((event.button === 2)) {
         Input.mouse.right = false;
       }
     };
@@ -71,7 +71,7 @@ const CreatureAnimation = () => {
     canvas.style.position = "absolute";
     canvas.style.left = "0px";
     canvas.style.top = "0px";
-    document.body.style.overflow = "hidden";
+    document.body.style.overflow = "";
     const ctx = canvas.getContext("2d");
     // Necessary classes
     let segmentCount = 0;
