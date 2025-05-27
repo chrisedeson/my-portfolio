@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 
 const CreatureAnimation = () => {
   const canvasRef = useRef(null);
-  
+
   useEffect(() => {
     const Input = {
       keys: [],
@@ -14,21 +14,21 @@ const CreatureAnimation = () => {
         y: 0,
       },
     };
-    
+
     // Initialize keys array
     for (let i = 0; i < 230; i++) {
       Input.keys.push(false);
     }
-    
+
     // Event listeners
     const handleKeyDown = (event) => {
       Input.keys[event.keyCode] = true;
     };
-    
+
     const handleKeyUp = (event) => {
       Input.keys[event.keyCode] = false;
     };
-    
+
     const handleMouseDown = (event) => {
       if ((event.button === 0)) {
         Input.mouse.left = true;
@@ -40,7 +40,7 @@ const CreatureAnimation = () => {
         Input.mouse.right = true;
       }
     };
-    
+
     const handleMouseUp = (event) => {
       if ((event.button === 0)) {
         Input.mouse.left = false;
@@ -52,22 +52,22 @@ const CreatureAnimation = () => {
         Input.mouse.right = false;
       }
     };
-    
+
     const handleMouseMove = (event) => {
       Input.mouse.x = event.clientX;
       Input.mouse.y = event.clientY;
     };
-    
+
     document.addEventListener("keydown", handleKeyDown);
     document.addEventListener("keyup", handleKeyUp);
     document.addEventListener("mousedown", handleMouseDown);
     document.addEventListener("mouseup", handleMouseUp);
     document.addEventListener("mousemove", handleMouseMove);
-    
+
     // Set up canvas
     const canvas = canvasRef.current;
     const container = canvas.parentElement;
-    
+
     // Set canvas dimensions to match container and handle resizing
     const updateCanvasDimensions = () => {
       canvas.width = container.clientWidth;
@@ -75,21 +75,21 @@ const CreatureAnimation = () => {
     };
     updateCanvasDimensions();
     window.addEventListener('resize', updateCanvasDimensions);
-    
+
     // Initial setup
     updateCanvasDimensions();
-    
+
     // Handle window resize
     const handleResize = () => {
       updateCanvasDimensions();
     };
-    
+
     window.addEventListener('resize', handleResize);
-    
+
     const ctx = canvas.getContext("2d");
     // Necessary classes
     let segmentCount = 0;
-    
+
     class Segment {
       constructor(parent, size, angle, range, stiffness) {
         segmentCount++;
@@ -586,7 +586,7 @@ const CreatureAnimation = () => {
           }
         }
       }
-      
+
       // Return the animation interval ID so we can clean it up later
       return setInterval(() => {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -597,20 +597,20 @@ const CreatureAnimation = () => {
     // Set up the animation
     canvas.style.backgroundColor = "black";
     ctx.strokeStyle = "white";
-    
+
     // Choose which animation to run
     // setupSimple(); // Just the very basic string
     // setupTentacle(); // Tentacle that reaches for mouse
     // setupLizard(.5,100,128); // Literal centipede
     // setupTestSquid(2,8); // Spidery thing
-    
+
     const legNum = Math.floor(1 + Math.random() * 12);
     const animationInterval = setupLizard(
       8 / Math.sqrt(legNum),
       legNum,
       Math.floor(4 + Math.random() * legNum * 8)
     );
-    
+
     // Enhanced cleanup function to remove resize event listener
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
@@ -624,9 +624,15 @@ const CreatureAnimation = () => {
   }, []);
 
   return (
-    <div style={{ width: '100%', height: '100%', overflow: 'auto' }}>
-      <canvas ref={canvasRef} style={{ width: '100%', height: '100%' }} />
-    </div>
+    <canvas ref={canvasRef} style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100vw',
+      height: '100vh',
+      pointerEvents: 'none', // Allows click events to pass through the canvas
+      zIndex: 1000 // Ensures it stays on top of other content
+    }} />
   );
 };
 
