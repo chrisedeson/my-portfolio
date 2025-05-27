@@ -54,8 +54,9 @@ const CreatureAnimation = () => {
     };
     
     const handleMouseMove = (event) => {
-      Input.mouse.x = event.clientX;
-      Input.mouse.y = event.clientY;
+      const rect = canvas.getBoundingClientRect();
+      Input.mouse.x = event.clientX - rect.left;
+      Input.mouse.y = event.clientY - rect.top;
     };
     
     document.addEventListener("keydown", handleKeyDown);
@@ -66,12 +67,24 @@ const CreatureAnimation = () => {
     
     // Set up canvas
     const canvas = canvasRef.current;
-    canvas.width = Math.max(window.innerWidth, window.innerWidth);
-    canvas.height = window.innerHeight;
-    canvas.style.position = "absolute";
-    canvas.style.left = "0px";
-    canvas.style.top = "0px";
-    document.body.style.overflow = "hidden";
+    const container = canvas.parentElement;
+    
+    // Set canvas dimensions to match container
+    const updateCanvasDimensions = () => {
+      canvas.width = container.clientWidth;
+      canvas.height = container.clientHeight;
+    };
+    
+    // Initial setup
+    updateCanvasDimensions();
+    
+    // Handle window resize
+    const handleResize = () => {
+      updateCanvasDimensions();
+    };
+    
+    window.addEventListener('resize', handleResize);
+    
     const ctx = canvas.getContext("2d");
     // Necessary classes
     let segmentCount = 0;
@@ -503,8 +516,8 @@ const CreatureAnimation = () => {
       const s = size;
       // (x,y,angle,fAccel,fFric,fRes,fThresh,rAccel,rFric,rRes,rThresh)
       const critter = new Creature(
-        window.innerWidth / 2,
-        window.innerHeight / 2,
+        canvas.width / 2,
+        canvas.height / 2,
         0,
         s * 10,
         s * 2,
@@ -604,22 +617,40 @@ const CreatureAnimation = () => {
       document.removeEventListener("mousedown", handleMouseDown);
       document.removeEventListener("mouseup", handleMouseUp);
       document.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener('resize', handleResize);
       clearInterval(animationInterval);
     };
   }, []);
 
   return (
-    <div className="creature-animation-container">
+    <div className="creature-animation-container" style={{
+      width: '100%',
+      height: '400px',
+      backgroundColor: 'black',
+      marginBottom: '2rem',
+      borderRadius: '8px',
+      position: 'relative',
+      overflow: 'hidden'
+    }}>
       <canvas 
         ref={canvasRef} 
         style={{ 
-          position: 'absolute', 
-          left: 0, 
-          top: 0, 
-          backgroundColor: 'black',
-          zIndex: -1
+          display: 'block',
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'black'
         }}
       />
+      <div style={{
+        position: 'absolute',
+        bottom: '10px',
+        right: '10px',
+        color: 'rgba(255,255,255,0.5)',
+        fontSize: '12px',
+        pointerEvents: 'none'
+      }}>
+        Move your mouse over the canvas to interact
+      </div>
     </div>
   );
 };
