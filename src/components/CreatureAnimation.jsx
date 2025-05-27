@@ -66,12 +66,8 @@ const CreatureAnimation = () => {
     
     // Set up canvas
     const canvas = canvasRef.current;
-    canvas.width = Math.max(window.innerWidth, window.innerWidth);
-    canvas.height = window.innerHeight;
-    canvas.style.position = "absolute";
-    canvas.style.left = "0px";
-    canvas.style.top = "0px";
-    document.body.style.overflow = "";
+    canvas.width = canvas.parentElement.clientWidth;
+    canvas.height = 500; // Fixed height instead of full viewport
     const ctx = canvas.getContext("2d");
     // Necessary classes
     let segmentCount = 0;
@@ -590,11 +586,20 @@ const CreatureAnimation = () => {
     // setupLizard(.5,100,128); // Literal centipede
     // setupTestSquid(2,8); // Spidery thing
     
-    const legNum = Math.floor(1 + Math.random() * 12);
+    // Handle window resize to keep canvas responsive
+    const handleResize = () => {
+      if (canvas && canvas.parentElement) {
+        canvas.width = canvas.parentElement.clientWidth;
+      }
+    };
+    
+    window.addEventListener('resize', handleResize);
+    
+    const legNum = Math.floor(1 + Math.random() * 6); // Reduced complexity
     const animationInterval = setupLizard(
       8 / Math.sqrt(legNum),
       legNum,
-      Math.floor(4 + Math.random() * legNum * 8)
+      Math.floor(4 + Math.random() * legNum * 4)
     );
     
     // Clean up function to remove event listeners and stop animation when component unmounts
@@ -604,20 +609,25 @@ const CreatureAnimation = () => {
       document.removeEventListener("mousedown", handleMouseDown);
       document.removeEventListener("mouseup", handleMouseUp);
       document.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener('resize', handleResize);
       clearInterval(animationInterval);
     };
   }, []);
 
   return (
-    <div className="creature-animation-container">
+    <div className="creature-animation-container" style={{ 
+      width: '100%',
+      height: '500px',
+      position: 'relative',
+      overflow: 'hidden',
+      backgroundColor: 'black',
+      marginBottom: '2rem'
+    }}>
       <canvas 
         ref={canvasRef} 
         style={{ 
-          position: 'absolute', 
-          left: 0, 
-          top: 0, 
-          backgroundColor: 'black',
-          zIndex: -1
+          display: 'block',
+          backgroundColor: 'black'
         }}
       />
     </div>
