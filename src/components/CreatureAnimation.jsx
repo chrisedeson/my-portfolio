@@ -65,14 +65,17 @@ const CreatureAnimation = () => {
     document.addEventListener("mousemove", handleMouseMove);
     
     // Set up canvas
-    const canvas = canvasRef.current;
-    const container = canvas.parentElement;
+    let canvas = canvasRef.current;
+    let container = canvas.parentElement;
     
-    // Set canvas dimensions to match container
-    const updateCanvasDimensions = () => {
-      canvas.width = container.clientWidth;
-      canvas.height = container.clientHeight;
-    };
+    // Set canvas dimensions to match container and handle resizing
+    const resizeObserver = new ResizeObserver(entries => {
+      for (let entry of entries) {
+        canvas.width = entry.contentRect.width;
+        canvas.height = entry.contentRect.height;
+      }
+    });
+    resizeObserver.observe(container);
     
     // Initial setup
     updateCanvasDimensions();
@@ -609,7 +612,7 @@ const CreatureAnimation = () => {
       Math.floor(4 + Math.random() * legNum * 8)
     );
     
-    // Clean up function to remove event listeners and stop animation when component unmounts
+    // Enhanced cleanup function to also disconnect ResizeObserver
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("keyup", handleKeyUp);
@@ -617,21 +620,13 @@ const CreatureAnimation = () => {
       document.removeEventListener("mouseup", handleMouseUp);
       document.removeEventListener("mousemove", handleMouseMove);
       clearInterval(animationInterval);
+      resizeObserver.disconnect();
     };
   }, []);
 
   return (
     <div className="creature-animation-container">
-      <canvas 
-        ref={canvasRef} 
-        style={{ 
-          position: 'absolute', 
-          left: 0, 
-          top: 0, 
-          backgroundColor: 'black',
-          zIndex: -1
-        }}
-      />
+      <canvas ref={canvasRef} style={{ width: '100%', height: '100%', backgroundColor: 'gray' }} />
     </div>
   );
 };
