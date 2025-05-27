@@ -58,25 +58,20 @@ const CreatureAnimation = () => {
       Input.mouse.y = event.clientY;
     };
     
-    // Add event listeners to the canvas element instead of document
-    // This ensures events only trigger when mouse is over the canvas
-    canvas.addEventListener("keydown", handleKeyDown);
-    canvas.addEventListener("keyup", handleKeyUp);
-    canvas.addEventListener("mousedown", handleMouseDown);
-    canvas.addEventListener("mouseup", handleMouseUp);
-    canvas.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("keyup", handleKeyUp);
+    document.addEventListener("mousedown", handleMouseDown);
+    document.addEventListener("mouseup", handleMouseUp);
+    document.addEventListener("mousemove", handleMouseMove);
     
     // Set up canvas
     const canvas = canvasRef.current;
-    
-    // Set initial dimensions
-    const updateCanvasDimensions = () => {
-      const container = canvas.parentElement;
-      canvas.width = container.clientWidth;
-      canvas.height = container.clientHeight;
-    };
-    
-    updateCanvasDimensions();
+    canvas.width = Math.max(window.innerWidth, window.innerWidth);
+    canvas.height = window.innerHeight;
+    canvas.style.position = "absolute";
+    canvas.style.left = "0px";
+    canvas.style.top = "0px";
+    document.body.style.overflow = "hidden";
     const ctx = canvas.getContext("2d");
     // Necessary classes
     let segmentCount = 0;
@@ -506,13 +501,10 @@ const CreatureAnimation = () => {
 
     const setupLizard = (size, legs, tail) => {
       const s = size;
-      // Use canvas dimensions instead of window dimensions
-      const centerX = canvas.width / 2;
-      const centerY = canvas.height / 2;
       // (x,y,angle,fAccel,fFric,fRes,fThresh,rAccel,rFric,rRes,rThresh)
       const critter = new Creature(
-        centerX,
-        centerY,
+        window.innerWidth / 2,
+        window.innerHeight / 2,
         0,
         s * 10,
         s * 2,
@@ -598,85 +590,36 @@ const CreatureAnimation = () => {
     // setupLizard(.5,100,128); // Literal centipede
     // setupTestSquid(2,8); // Spidery thing
     
-    // Handle window resize to keep canvas responsive
-    const handleResize = () => {
-      if (canvas && canvas.parentElement) {
-        updateCanvasDimensions();
-      }
-    };
-    
-    window.addEventListener('resize', handleResize);
-    
-    // Calculate creature position based on container center
-    const containerWidth = canvas.width;
-    const containerHeight = canvas.height;
-    
-    // Adjust mouse coordinates relative to canvas
-    const getRelativeMouseCoords = (event) => {
-      const rect = canvas.getBoundingClientRect();
-      return {
-        x: event.clientX - rect.left,
-        y: event.clientY - rect.top
-      };
-    };
-    
-    // Update mouse move handler to use relative coordinates
-    canvas.removeEventListener("mousemove", handleMouseMove);
-    const handleRelativeMouseMove = (event) => {
-      const rect = canvas.getBoundingClientRect();
-      Input.mouse.x = event.clientX - rect.left;
-      Input.mouse.y = event.clientY - rect.top;
-    };
-    canvas.addEventListener("mousemove", handleRelativeMouseMove);
-    
-    const legNum = Math.floor(1 + Math.random() * 6); // Reduced complexity
+    const legNum = Math.floor(1 + Math.random() * 12);
     const animationInterval = setupLizard(
       8 / Math.sqrt(legNum),
       legNum,
-      Math.floor(4 + Math.random() * legNum * 4)
+      Math.floor(4 + Math.random() * legNum * 8)
     );
     
     // Clean up function to remove event listeners and stop animation when component unmounts
     return () => {
-      canvas.removeEventListener("keydown", handleKeyDown);
-      canvas.removeEventListener("keyup", handleKeyUp);
-      canvas.removeEventListener("mousedown", handleMouseDown);
-      canvas.removeEventListener("mouseup", handleMouseUp);
-      canvas.removeEventListener("mousemove", handleRelativeMouseMove);
-      window.removeEventListener('resize', handleResize);
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("keyup", handleKeyUp);
+      document.removeEventListener("mousedown", handleMouseDown);
+      document.removeEventListener("mouseup", handleMouseUp);
+      document.removeEventListener("mousemove", handleMouseMove);
       clearInterval(animationInterval);
     };
   }, []);
 
   return (
-    <div className="creature-animation-container" style={{ 
-      width: '100%',
-      height: '400px',
-      backgroundColor: 'black',
-      marginBottom: '2rem',
-      borderRadius: '8px',
-      overflow: 'hidden',
-      position: 'relative'
-    }}>
+    <div className="creature-animation-container">
       <canvas 
         ref={canvasRef} 
         style={{ 
-          width: '100%',
-          height: '100%',
-          display: 'block',
-          backgroundColor: 'black'
+          position: 'absolute', 
+          left: 0, 
+          top: 0, 
+          backgroundColor: 'black',
+          zIndex: -1
         }}
       />
-      <div style={{
-        position: 'absolute',
-        bottom: '10px',
-        right: '10px',
-        color: 'rgba(255,255,255,0.5)',
-        fontSize: '12px',
-        pointerEvents: 'none'
-      }}>
-        Move your mouse over the canvas to interact
-      </div>
     </div>
   );
 };
