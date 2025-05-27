@@ -58,11 +58,13 @@ const CreatureAnimation = () => {
       Input.mouse.y = event.clientY;
     };
     
-    document.addEventListener("keydown", handleKeyDown);
-    document.addEventListener("keyup", handleKeyUp);
-    document.addEventListener("mousedown", handleMouseDown);
-    document.addEventListener("mouseup", handleMouseUp);
-    document.addEventListener("mousemove", handleMouseMove);
+    // Add event listeners to the canvas element instead of document
+    // This ensures events only trigger when mouse is over the canvas
+    canvas.addEventListener("keydown", handleKeyDown);
+    canvas.addEventListener("keyup", handleKeyUp);
+    canvas.addEventListener("mousedown", handleMouseDown);
+    canvas.addEventListener("mouseup", handleMouseUp);
+    canvas.addEventListener("mousemove", handleMouseMove);
     
     // Set up canvas
     const canvas = canvasRef.current;
@@ -504,10 +506,13 @@ const CreatureAnimation = () => {
 
     const setupLizard = (size, legs, tail) => {
       const s = size;
+      // Use canvas dimensions instead of window dimensions
+      const centerX = canvas.width / 2;
+      const centerY = canvas.height / 2;
       // (x,y,angle,fAccel,fFric,fRes,fThresh,rAccel,rFric,rRes,rThresh)
       const critter = new Creature(
-        window.innerWidth / 2,
-        window.innerHeight / 2,
+        centerX,
+        centerY,
         0,
         s * 10,
         s * 2,
@@ -616,13 +621,13 @@ const CreatureAnimation = () => {
     };
     
     // Update mouse move handler to use relative coordinates
-    document.removeEventListener("mousemove", handleMouseMove);
+    canvas.removeEventListener("mousemove", handleMouseMove);
     const handleRelativeMouseMove = (event) => {
-      const coords = getRelativeMouseCoords(event);
-      Input.mouse.x = coords.x;
-      Input.mouse.y = coords.y;
+      const rect = canvas.getBoundingClientRect();
+      Input.mouse.x = event.clientX - rect.left;
+      Input.mouse.y = event.clientY - rect.top;
     };
-    document.addEventListener("mousemove", handleRelativeMouseMove);
+    canvas.addEventListener("mousemove", handleRelativeMouseMove);
     
     const legNum = Math.floor(1 + Math.random() * 6); // Reduced complexity
     const animationInterval = setupLizard(
@@ -633,11 +638,11 @@ const CreatureAnimation = () => {
     
     // Clean up function to remove event listeners and stop animation when component unmounts
     return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.removeEventListener("keyup", handleKeyUp);
-      document.removeEventListener("mousedown", handleMouseDown);
-      document.removeEventListener("mouseup", handleMouseUp);
-      document.removeEventListener("mousemove", handleRelativeMouseMove);
+      canvas.removeEventListener("keydown", handleKeyDown);
+      canvas.removeEventListener("keyup", handleKeyUp);
+      canvas.removeEventListener("mousedown", handleMouseDown);
+      canvas.removeEventListener("mouseup", handleMouseUp);
+      canvas.removeEventListener("mousemove", handleRelativeMouseMove);
       window.removeEventListener('resize', handleResize);
       clearInterval(animationInterval);
     };
@@ -646,10 +651,12 @@ const CreatureAnimation = () => {
   return (
     <div className="creature-animation-container" style={{ 
       width: '100%',
-      height: '500px',
+      height: '400px',
       backgroundColor: 'black',
       marginBottom: '2rem',
-      borderRadius: '8px'
+      borderRadius: '8px',
+      overflow: 'hidden',
+      position: 'relative'
     }}>
       <canvas 
         ref={canvasRef} 
@@ -660,6 +667,16 @@ const CreatureAnimation = () => {
           backgroundColor: 'black'
         }}
       />
+      <div style={{
+        position: 'absolute',
+        bottom: '10px',
+        right: '10px',
+        color: 'rgba(255,255,255,0.5)',
+        fontSize: '12px',
+        pointerEvents: 'none'
+      }}>
+        Move your mouse over the canvas to interact
+      </div>
     </div>
   );
 };
