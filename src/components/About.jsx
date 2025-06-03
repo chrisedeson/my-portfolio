@@ -13,7 +13,7 @@ export default function About() {
                             I’m probably debugging—or figuring out what to eat next (I love eating!😋), 
                             which is just another form of problem-solving! Always learning, always building!
                         </p>
-                        <a href="https://drive.google.com/file/d/1Qzr_HkIA5JyH5LpmJ89onMAE77MO58En/view?usp=sharing" className="btn resume-btn">My Resume</a>
+                        <a href="https://drive.google.com/file/d/1nqUxnQl8bKqCvUYPGes8NV4RCgKrKJAC/view?usp=drive_link" className="btn resume-btn">My Résumé</a>
                     </div>
 
                     <div className="about__photo-container">
