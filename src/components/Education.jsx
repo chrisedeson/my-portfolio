@@ -11,42 +11,19 @@ export default function Education() {
         <div className="client__logos">
           {/* Coursera */}
           <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              window.open(
-                "https://www.coursera.org",
-                "_blank",
-                "noopener,noreferrer"
-              );
-              window.open(
-                "https://drive.google.com/file/d/1xfAepUxvvJSeA_N7OMAYWGhA1G9HvArm/view?usp=sharing",
-                "_blank",
-                "noopener,noreferrer"
-              );
-            }}
+            href="https://drive.google.com/file/d/1xfAepUxvvJSeA_N7OMAYWGhA1G9HvArm/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
             className="client__link"
           >
             <SiCoursera className="client__logo coursera" tabIndex="0" />
-            <span style={{ marginLeft: "8px" }}>Open Coursera & Drive</span>
           </a>
 
           {/* BYU-Pathway */}
           <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              window.open(
-                "https://www.byupathway.org",
-                "_blank",
-                "noopener,noreferrer"
-              );
-              window.open(
-                "https://drive.google.com/file/d/1KMwPKByfInjQlZhp0G47LxzetRCsIwZN/view?usp=sharing",
-                "_blank",
-                "noopener,noreferrer"
-              );
-            }}
+            href="https://drive.google.com/file/d/1KMwPKByfInjQlZhp0G47LxzetRCsIwZN/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
             className="client__link"
           >
             <img
@@ -59,20 +36,9 @@ export default function Education() {
 
           {/* Scrimba */}
           <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              window.open(
-                "https://scrimba.com",
-                "_blank",
-                "noopener,noreferrer"
-              );
-              window.open(
-                "https://drive.google.com/file/d/1gTOxN-NuSp3UZTxs47h5_WwZJtiH96Cf/view?usp=sharing",
-                "_blank",
-                "noopener,noreferrer"
-              );
-            }}
+            href="https://drive.google.com/file/d/1gTOxN-NuSp3UZTxs47h5_WwZJtiH96Cf/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
             className="client__link"
           >
             <SiScrimba className="client__logo scrimba" tabIndex="0" />
@@ -82,4 +48,3 @@ export default function Education() {
     </section>
   );
 }
-
