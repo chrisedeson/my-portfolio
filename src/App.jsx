@@ -9,7 +9,6 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import AccessibilityFeatures from "./components/AccessibilityFeatures.jsx";
-import CreatureAnimation from "./components/creatureAnimation.jsx";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -24,11 +23,9 @@ function App() {
         <Loading onVideoEnd={handleVideoEnd} /> // Pass the function to Loading component
       ) : (
         <>
-        <CreatureAnimation />
           <AccessibilityFeatures />
           <Header />
           <Greeting />
-          <CreatureAnimation />  
           <main role="main">
             <Skills />
             <Projects />
