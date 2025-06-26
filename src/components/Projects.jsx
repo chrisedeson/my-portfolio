@@ -15,6 +15,8 @@ export default function Projects() {
             <h2 className='my-work-header'>My Work</h2>
             <div className="work__boxes">
               {/* <-- Each div with the work__box class is a project. --> */}
+
+              {/* MOVIE WATCHLIST */}
               <div className="work__box">
                 <div className="work__text">
                   <h3>Movie Watchlist</h3>
@@ -40,7 +42,8 @@ export default function Projects() {
                   <img src={project1} className="work__image" alt="Project 1" />
                 </div>
               </div>
-      
+
+              {/* LEARNING JOURNAL */}
               <div className="work__box">
                 <div className="work__text">
                   <h3>Learning Journal</h3>
@@ -65,7 +68,8 @@ export default function Projects() {
                   <img src={project2} className="work__image" alt="Learning Journal" />
                 </div>
               </div>
-      
+
+              {/* ASSEMBLY ENDGAME */}
               <div className="work__box">
                 <div className="work__text">
                   <h3>Assembly Endgame</h3>
@@ -93,6 +97,7 @@ export default function Projects() {
                 </div>
               </div>
 
+              {/* POLLYGROT */}
               <div className="work__box">
                 <div className="work__text">
                   <h3>PollyGrot</h3>
@@ -122,6 +127,7 @@ export default function Projects() {
                 </div>
               </div>
 
+              {/* SKIMMER */}
               <div className="work__box">
                 <div className="work__text">
                   <h3>Skimmer</h3>
@@ -145,6 +151,37 @@ export default function Projects() {
                 </div>
                 <div className="work__image-box">
                   <img src={project5} className="work__image" alt="Skimmer Web App" />
+                </div>
+              </div>
+
+              {/* TIC-TAC-TOE */}
+              <div className="work__box">
+                <div className="work__text">
+                  <h3>Tic-Tac-Toe</h3>
+                  <p>
+                    A real-time multiplayer Tic-Tac-Toe game using WebSockets.
+                  </p>
+                  <ul className="work__list">
+                    <li>React 19 (TypeScript)</li>
+                    <li>React Router v7</li>
+                    <li>Tailwind CSS</li>
+                    <li>Node.js</li>
+                    <li>Express</li>
+                    <li>Socket.IO</li>
+                    <li>AWS EC2</li>
+                    <li>AWS DynamoDB</li>
+                  </ul>
+                  <div className="work__links">
+                    <a href="https://tikky-tac.ddns.net/" target="_blank" className="link__text" rel="noopener noreferrer">
+                      Visit Site <span>&rarr;</span>
+                    </a>
+                    <a href="https://github.com/chrisedeson/tic-tac-toe" target="_blank" rel="noopener noreferrer">
+                      <FaGithub className="work__code" title="View Source Code" />
+                    </a>
+                  </div>
+                </div>
+                <div className="work__image-box">
+                  <img src="https://raw.githubusercontent.com/chrisedeson/tic-tac-toe/refs/heads/master/frontend/public/preview.jpg" className="work__image" alt="Online Tic Tac Toe Game" />
                 </div>
               </div>
 
