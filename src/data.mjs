@@ -6,7 +6,7 @@ export const skillsSection = {
     title: "What i do",
     subTitle: "CRAZY FRONTEND WEB DEVELOPER WHO WANTS TO EXPLORE EVERY TECH STACK",
     skills: [
-      emoji("⚡ Develop highly interactive Front end / User Interfaces for your web and mobile applications"),
+      emoji("⚡ Develop highly interactive Frontend / User Interfaces for your web and mobile applications"),
       emoji("⚡ Optimize web performance and accessibility for better user experience"),
       emoji("⚡ Currently learning advanced backend integrations with Firebase/AWS and Progressive Web Applications (PWA)"),
     ],
@@ -28,32 +28,33 @@ export const skillsSection = {
         fontAwesomeClassname: "fab fa-js"
       },
       {
+        skillName: "python",
+        fontAwesomeClassname: "fab fa-python"
+      },
+      {
         skillName: "reactjs",
         fontAwesomeClassname: "fab fa-react"
       },
-      // {
-      //   skillName: "nodejs",
-      //   fontAwesomeClassname: "fab fa-node"
-      // },
       {
-        skillName: "npm",
-        fontAwesomeClassname: "fab fa-npm"
+        skillName: "nodejs",
+        fontAwesomeClassname: "fab fa-node"
+      },
+      {
+        skillName: "git",
+        fontAwesomeClassname: "fab fa-git-alt"
       },
       {
         skillName: "sql-database",
         fontAwesomeClassname: "fas fa-database"
       },
-      // {
-      //   skillName: "aws",
-      //   fontAwesomeClassname: "fab fa-aws"
-      // },
+      {
+        skillName: "aws",
+        fontAwesomeClassname: "fab fa-aws"
+      },
       {
         skillName: "firebase",
         fontAwesomeClassname: "fas fa-fire"
       },
-      {
-        skillName: "python",
-        fontAwesomeClassname: "fab fa-python"
-      },
+      
     ]
   };
