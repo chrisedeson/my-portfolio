@@ -209,12 +209,12 @@ export default function Projects() {
                   <li>Node.js</li>
                   <li>Express</li>
                   <li>Socket.IO</li>
-                  <li>AWS EC2</li>
-                  <li>AWS DynamoDB</li>
+                  <li>MongoDB</li>
+                  <li>Render</li>
                 </ul>
                 <div className="work__links">
                   <a
-                    href="https://tikky-tac.ddns.net/"
+                    href="https://tikky-tac.onrender.com"
                     target="_blank"
                     className="link__text"
                     rel="noopener noreferrer"
