@@ -214,7 +214,7 @@ export default function Projects() {
                 </ul>
                 <div className="work__links">
                   <a
-                    href="https://tikky-tac.ddns.net/"
+                    href="https://tikky-tac.onrender.com/"
                     target="_blank"
                     className="link__text"
                     rel="noopener noreferrer"
